@@ -21,8 +21,11 @@ def encrypt(msg, key):
 
 def decrypt(msg, key):
     shift_msg = []
+    print(msg)
     for i in msg:
-        shift_msg.append((i - key) % 26)
+        if i in shifts:
+            shift_msg.append((i - key) % 26)
+    #print(shift_msg)
     return shift_msg
 
 def map_abc(msg):
@@ -96,7 +99,7 @@ if (selected_option == 1):
     print(input_message)
     num_message = map_abc(input_message)
     # print(num_message)
-    ciph_message = encrypt(num_message,1)
+    ciph_message = encrypt(num_message,shift_key)
     # print(ciph_message)
     encrypted_message = map_nums(ciph_message)
     print(encrypted_message)
@@ -109,7 +112,7 @@ if (selected_option == 2):
     print(input_message)
     d_num_message = map_abc(input_message)
     # print(d_num_message)
-    deciph_message = decrypt(d_num_message,1)
+    deciph_message = decrypt(d_num_message,shift_key)
     # print(deciph_message)
     decrypted_message = map_nums(deciph_message)
     print(decrypted_message)
